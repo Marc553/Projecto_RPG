@@ -39,6 +39,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Grass
+    uniqueID: 2952043909
+    locked: 0
+  - name: Background
+    uniqueID: 2614261169
+    locked: 0
+  - name: Midleground
+    uniqueID: 1846141485
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 3039905199
+    locked: 0
+  - name: Details
+    uniqueID: 874855971
     locked: 0
