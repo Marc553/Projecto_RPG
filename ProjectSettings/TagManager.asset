@@ -51,8 +51,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: strucure
+    uniqueID: 1215456295
+    locked: 0
   - name: Foreground
     uniqueID: 3039905199
+    locked: 0
+  - name: windows
+    uniqueID: 3840270771
     locked: 0
   - name: Details
     uniqueID: 874855971
