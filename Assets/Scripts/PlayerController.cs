@@ -8,22 +8,54 @@ public class PlayerController : MonoBehaviour
     public const string HORIZONTAL= "Horizontal", VERTICAL = "Vertical";
     private float inputTol = 0.2f; // Input tolerance 
     private float xInput, yInput;
-    
+
+    private bool isWalking;
+    private Vector2 lastDirection;
+    private Animator _animator;
+
+    private Rigidbody2D _rigidbody;
  
-    void Update()
+       private void Awake()
     {
+        _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>(); 
+    }
+
+    void Update()
+    {   
+        yInput = Input.GetAxisRaw(VERTICAL);
         xInput = Input.GetAxisRaw(HORIZONTAL);
+        isWalking = false;
+       
+        //  Horizontal Input
         if(Mathf.Abs(xInput) > inputTol)
         {
-            Vector3 Xtranslation = new Vector3(xInput * speed * Time.deltaTime, 0, 0);
-            transform.Translate(Xtranslation);
+            _rigidbody.velocity = new Vector2(xInput * speed, 0);
+            
+            isWalking = true;
+            lastDirection = new Vector2(xInput, 0);
         }
         
-        yInput = Input.GetAxisRaw(VERTICAL);
+        
         if(Mathf.Abs(yInput) > inputTol)
         {
-            Vector3 Ytranslation = new Vector3(0, yInput * speed * Time.deltaTime , 0);
-            transform.Translate(Ytranslation);
+            _rigidbody.velocity = new Vector2(0 , yInput * speed);
+            isWalking = true;
+            lastDirection = new Vector2(0, yInput);
         }
     }
+
+    private void LateUpdate()
+    {   if(!isWalking)
+        {
+            _rigidbody.velocity = Vector2.zero;
+        }
+        _animator.SetFloat(HORIZONTAL, xInput);
+        _animator.SetFloat(VERTICAL, yInput);
+        _animator.SetFloat("LasHorizontal", lastDirection.x);
+        _animator.SetFloat("LastVertical", lastDirection.y);
+        _animator.SetBool("IsWalking", isWalking);
+        
+    }
+
 }
