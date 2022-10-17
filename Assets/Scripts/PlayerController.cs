@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastDirection;
     private Animator _animator;
 
+    public static bool playerCreated;
+
+
     private Rigidbody2D _rigidbody;
  
        private void Awake()
@@ -21,6 +24,10 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>(); 
     }
 
+    private void Start()
+    {
+        playerCreated = true;
+    }
     void Update()
     {   
         yInput = Input.GetAxisRaw(VERTICAL);
