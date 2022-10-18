@@ -16,7 +16,8 @@ public class GoToScene : MonoBehaviour
             manualEnter = Input.GetButtonDown("Fire1");
         }
     }
-
+    
+    //Automatic
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player")
@@ -28,6 +29,7 @@ public class GoToScene : MonoBehaviour
         }
     }
     
+    //Manual
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.name == "Player")
