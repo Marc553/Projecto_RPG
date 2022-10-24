@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 
     private bool isWalking;
     public Vector2 lastDirection;
+
+    public string nextUuid; //uuid : universal unique identifier;
+
     private Animator _animator;
 
     public static bool playerCreated;

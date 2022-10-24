@@ -8,6 +8,7 @@ public class GoToScene : MonoBehaviour
     public string sceneName = "New Scene name here";
     public bool isAutomatic;
     public bool manualEnter;
+    public string uuid; //uuid : universal unique identifier;
 
     private void Update()
     {
@@ -17,28 +18,32 @@ public class GoToScene : MonoBehaviour
         }
     }
     
+    
+
     //Automatic
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
-        {
-            if(isAutomatic)
-            {
-                SceneManager.LoadScene(sceneName);
-            }
-        }
+        Teleport(other.name);
     }
-    
+
     //Manual
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.name == "Player")
+        Teleport(other.name);
+    }
+
+
+    private void Teleport(string objName)
+    {
+        if(objName == "Player")
         {
-            if(!isAutomatic && manualEnter)
+            if(isAutomatic || (isAutomatic && manualEnter))
             {
+                FindObjectOfType<PlayerController>().nextUuid = uuid;
                 SceneManager.LoadScene(sceneName);
             }
         }
     }
+
     
 }
