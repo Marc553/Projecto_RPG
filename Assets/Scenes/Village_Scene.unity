@@ -46151,7 +46151,10 @@ GameObject:
   - component: {fileID: 1822814208}
   - component: {fileID: 1822814207}
   - component: {fileID: 1822814210}
-  m_Layer: 0
+  - component: {fileID: 1822814212}
+  - component: {fileID: 1822814211}
+  - component: {fileID: 1822814213}
+  m_Layer: 3
   m_Name: Minion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46238,7 +46241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822814206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.396324, y: -0.49634397, z: 0}
+  m_LocalPosition: {x: -32, y: 9.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46271,6 +46274,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &1822814211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822814206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94218468535f864cb3283089ef46514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  timeToMakeStep: 1
+  timeBetweenStep: 2
+  hasRandomMove: 0
+  enemyDirections:
+  - {x: -1, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: -1}
+  - {x: -1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 0, y: 0}
+--- !u!114 &1822814212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822814206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eea347a73f93d449fc0900a5d58079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToRevivePlayer: 2
+--- !u!50 &1822814213
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822814206}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1848877475
 GameObject:
   m_ObjectHideFlags: 0
@@ -46383,6 +46443,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7be892cc94c3624898790e6ef982bfa, type: 3}
+--- !u!1 &2082874328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 462990354748794888, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+  m_PrefabInstance: {fileID: 462990354995560635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082874335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082874328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eea347a73f93d449fc0900a5d58079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToRevivePlayer: 2
 --- !u!1001 &462990354995560635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46394,17 +46472,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 462990354748794888, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 462990354748794893, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 462990354748794893, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.33
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 462990354748794893, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.38
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 462990354748794893, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
       propertyPath: m_LocalPosition.z
@@ -46438,17 +46520,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5791510571712126337, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791510571712126337, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6750324724640164099, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
       propertyPath: speed
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6750324724640164099, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+      propertyPath: hasRandomMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750324724640164099, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
       propertyPath: timeToMakeStep
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6750324724640164099, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
       propertyPath: timeBetweenStep
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750324724640164099, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+      propertyPath: enemyDirections.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750324724640164099, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+      propertyPath: enemyDirections.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750324724640164099, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
+      propertyPath: enemyDirections.Array.data[1].x
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 299b684a2dbdd984da9958bdba21f074, type: 3}
