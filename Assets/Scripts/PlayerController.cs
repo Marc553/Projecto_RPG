@@ -20,8 +20,12 @@ public class PlayerController : MonoBehaviour
 
 
     private Rigidbody2D _rigidbody;
- 
-       private void Awake()
+
+    private bool isAttacking;
+    [SerializeField] private float attackTime;
+    private float attackTimeCounter;
+
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>(); 
@@ -32,40 +36,55 @@ public class PlayerController : MonoBehaviour
         playerCreated = true;
     }
     void Update()
-    {   
+    {
         yInput = Input.GetAxisRaw(VERTICAL);
         xInput = Input.GetAxisRaw(HORIZONTAL);
         isWalking = false;
-       
-        //  Horizontal Input
-        if(Mathf.Abs(xInput) > inputTol)
+        if (isAttacking)
         {
-            _rigidbody.velocity = new Vector2(xInput * speed, 0);
-            
-            isWalking = true;
-            lastDirection = new Vector2(xInput, 0);
+            attackTimeCounter -= Time.deltaTime;
+            if (attackTimeCounter < 0)
+            {
+                isAttacking = false;
+            }
         }
-        
-        
-        if(Mathf.Abs(yInput) > inputTol)
+        else if (Input.GetMouseButtonDown(0))
         {
-            _rigidbody.velocity = new Vector2(0 , yInput * speed);
-            isWalking = true;
-            lastDirection = new Vector2(0, yInput);
+            isAttacking = true;
+            attackTimeCounter = attackTime;
+
+            //  Horizontal Input
+            if (Mathf.Abs(xInput) > inputTol)
+            {
+                _rigidbody.velocity = new Vector2(xInput * speed, 0);
+
+                isWalking = true;
+                lastDirection = new Vector2(xInput, 0);
+            }
+
+
+            if (Mathf.Abs(yInput) > inputTol)
+            {
+                _rigidbody.velocity = new Vector2(0, yInput * speed);
+                isWalking = true;
+                lastDirection = new Vector2(0, yInput);
+            }
         }
     }
 
-    private void LateUpdate()
-    {   if(!isWalking)
-        {
-            _rigidbody.velocity = Vector2.zero;
-        }
-        _animator.SetFloat(HORIZONTAL, xInput);
-        _animator.SetFloat(VERTICAL, yInput);
-        _animator.SetFloat("LasHorizontal", lastDirection.x);
-        _animator.SetFloat("LastVertical", lastDirection.y);
-        _animator.SetBool("IsWalking", isWalking);
-        
-    }
 
+        private void LateUpdate()
+        { if (!isWalking || isAttacking)
+            {
+                _rigidbody.velocity = Vector2.zero;
+            }
+            _animator.SetFloat(HORIZONTAL, xInput);
+            _animator.SetFloat(VERTICAL, yInput);
+            _animator.SetFloat("LasHorizontal", lastDirection.x);
+            _animator.SetFloat("LastVertical", lastDirection.y);
+            _animator.SetBool("IsWalking", isWalking);
+            _animator.SetBool("IsAttacking", isAttacking);
+             
+        }
+        
 }
