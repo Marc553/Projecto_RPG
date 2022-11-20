@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackTime;
     private float attackTimeCounter;
 
+    public bool canMove = true;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -88,3 +90,4 @@ public class PlayerController : MonoBehaviour
         }
         
 }
+//508 DIAPOSITIVA

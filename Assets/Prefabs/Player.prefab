@@ -233,6 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  isBlinking: 0
+  blinkingDuration: 2
 --- !u!1001 &1188884990245807796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -388,6 +390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4504803455920406979}
     m_Modifications:
+    - target: {fileID: 1433013107974337588, guid: 2d6e15f30667d494785452ed2b797348, type: 3}
+      propertyPath: bloodParticle
+      value: 
+      objectReference: {fileID: 6717502648834557301, guid: 1e28aa53fb35b8c4bbdf26bb3c787df0, type: 3}
     - target: {fileID: 5721388995744988586, guid: 2d6e15f30667d494785452ed2b797348, type: 3}
       propertyPath: m_RootOrder
       value: 0
