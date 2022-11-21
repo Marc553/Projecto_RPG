@@ -36,12 +36,18 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerCreated = true;
+        lastDirection = Vector2.down;
     }
     void Update()
     {
         yInput = Input.GetAxisRaw(VERTICAL);
         xInput = Input.GetAxisRaw(HORIZONTAL);
         isWalking = false;
+        if (!canMove)
+        {
+            return;
+        }
+
         if (isAttacking)
         {
             attackTimeCounter -= Time.deltaTime;
@@ -54,7 +60,9 @@ public class PlayerController : MonoBehaviour
         {
             isAttacking = true;
             attackTimeCounter = attackTime;
-
+        }
+        else
+        { 
             //  Horizontal Input
             if (Mathf.Abs(xInput) > inputTol)
             {
@@ -82,7 +90,7 @@ public class PlayerController : MonoBehaviour
             }
             _animator.SetFloat(HORIZONTAL, xInput);
             _animator.SetFloat(VERTICAL, yInput);
-            _animator.SetFloat("LasHorizontal", lastDirection.x);
+            _animator.SetFloat("LastHorizontal", lastDirection.x);
             _animator.SetFloat("LastVertical", lastDirection.y);
             _animator.SetBool("IsWalking", isWalking);
             _animator.SetBool("IsAttacking", isAttacking);

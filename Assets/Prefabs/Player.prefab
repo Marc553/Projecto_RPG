@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4504803455920406979}
+  - component: {fileID: 1546883040}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -29,11 +30,24 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4132144714845115848}
-  - {fileID: 4871339774246778542}
   - {fileID: 8739792294451026329}
+  - {fileID: 4871339774246778542}
   m_Father: {fileID: 3590748877450671465}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1546883040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18202491304360218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d34f9753322180458318806144dbe4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeWeapon: 0
 --- !u!1 &3590748877450671467
 GameObject:
   m_ObjectHideFlags: 0
@@ -50,6 +64,7 @@ GameObject:
   - component: {fileID: 3590748877450671470}
   - component: {fileID: -3383322935198700477}
   - component: {fileID: -2779342098348267623}
+  - component: {fileID: 1369062474563164628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -141,6 +156,7 @@ MonoBehaviour:
   lastDirection: {x: 0, y: 0}
   nextUuid: 
   attackTime: 0.6
+  canMove: 1
 --- !u!95 &3590748877450671471
 Animator:
   serializedVersion: 4
@@ -235,6 +251,23 @@ MonoBehaviour:
   maxHealth: 100
   isBlinking: 0
   blinkingDuration: 2
+  expWhenDefeated: 0
+--- !u!114 &1369062474563164628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3590748877450671467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec696fcad9e9fd146a8462ddc2fc1e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  exp: 0
+  expToLevelUp: 0000000064000000c80000002c01000090010000f401000058020000bc0200002003000084030000e8030000
+  maxHealthLevel: 00000000640000007d00000096000000af000000c8000000fa0000002c0100005e01000090010000f4010000
 --- !u!1001 &1188884990245807796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,11 +285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4807119555048417139, guid: 4c5e2f7079526e44e95c0e34984c01f3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6045446082669891610, guid: 4c5e2f7079526e44e95c0e34984c01f3, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6045446082669891610, guid: 4c5e2f7079526e44e95c0e34984c01f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -326,7 +359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1427798677380571260, guid: 31f78a2e6857f4b49b9be790263b3835, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1427798677380571260, guid: 31f78a2e6857f4b49b9be790263b3835, type: 3}
       propertyPath: m_LocalPosition.x
@@ -441,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 6788499212047420099, guid: 2d6e15f30667d494785452ed2b797348, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788499212047420099, guid: 2d6e15f30667d494785452ed2b797348, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d6e15f30667d494785452ed2b797348, type: 3}

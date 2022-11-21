@@ -10,6 +10,8 @@ public class HealthManager : MonoBehaviour
     public float blinkingDuration;
     private float blinkingCounter;
     private SpriteRenderer _characterRenderer;
+    public int expWhenDefeated;
+
     private void Start()
     {
         UpdateMaxHealth(maxHealth);//vida total que posee en el juego
@@ -22,6 +24,7 @@ public class HealthManager : MonoBehaviour
         if (isBlinking)
         {
             blinkingCounter -= Time.deltaTime;
+
             if (blinkingCounter > blinkingDuration * 0.8)
             {
                 ToggleColor(false);
@@ -34,22 +37,24 @@ public class HealthManager : MonoBehaviour
             {
                 ToggleColor(false);
             }
-        }
-        else if (blinkingCounter > blinkingDuration * 0.2)
-        {
+            
+            else if (blinkingCounter > blinkingDuration * 0.2)
+            {
             ToggleColor(true);
-        }
-        else if (blinkingCounter > 0)
-        {
+            }
+            else if (blinkingCounter > 0)
+            {
             ToggleColor(false);
-        }
-        else
-        {
+            }
+            else
+            {
             ToggleColor(true);
             isBlinking = false;
             GetComponent<BoxCollider2D>().enabled = true;
             GetComponent<PlayerController>().canMove = true;
+            }
         }
+        
     }
 
     
@@ -60,13 +65,20 @@ public class HealthManager : MonoBehaviour
         if (currentHealth <= 0)//si la vida baja por debajo de 0 "mueres"
         {
             gameObject.SetActive(false);//"morir"
-        }
-        if (blinkingDuration > 0)
-        {
-            isBlinking = true;
-            blinkingCounter = blinkingDuration;
-            GetComponent<BoxCollider2D>().enabled = false;
-            GetComponent<PlayerController>().canMove = false;
+
+            if (gameObject.tag.Equals("Enemy"))
+            {
+                GameObject.Find("Player").GetComponent<CharacterStats>().
+                 AddExperience(expWhenDefeated);
+            }
+
+            if (blinkingDuration > 0)
+            {
+                isBlinking = true;
+                blinkingCounter = blinkingDuration;
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<PlayerController>().canMove = false;
+            }
         }
     }
 
