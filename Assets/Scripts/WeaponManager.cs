@@ -28,7 +28,7 @@ public class WeaponManager : MonoBehaviour
         weapons[activeWeapon].SetActive(true);
     }
 
-    public List<GameObject> GetAllWapons()
+    public List<GameObject> GetAllWeapons()
     {
         return weapons;
     }

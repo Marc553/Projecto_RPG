@@ -7,14 +7,14 @@ public class DoDamage : MonoBehaviour
     public float timeToRevivePlayer = 2;//tiempo para revivir
 
     public int damage = 10;//daño del enemigo
-    /*
+    
     private float timeRevivalCounter; //tiempo que pasa hasta reivir
     private bool isPlayerReviving;// mira si esta muerto o vivo el player
     private GameObject player; //player
-    */
+    
     
     private void Update()
-    { /*
+    { 
         if (isPlayerReviving)//mira si el player esta reviviendo 
         {
             timeRevivalCounter -= Time.deltaTime;//tiempo que pasa antes de revivir
@@ -24,7 +24,7 @@ public class DoDamage : MonoBehaviour
                 player.SetActive(true);//revive al player
             }
         }
-        */
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)//funcion que quita vida al player
