@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public bool canMove = true;
 
+    public bool isTalking;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -34,12 +36,20 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Start()
-    {
+    {   
         playerCreated = true;
+        isTalking = false;
+        
         lastDirection = Vector2.down;
     }
     void Update()
     {
+        if (isTalking)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            return;
+        }
+
         yInput = Input.GetAxisRaw(VERTICAL);
         xInput = Input.GetAxisRaw(HORIZONTAL);
         isWalking = false;
